@@ -10,7 +10,12 @@ const user = await prisma.user.upsert({
   update: {},
   create: { email: "alice@example.com", name: "Alice" },
 });
-console.log("user:", user);
-console.log("all users:", await prisma.user.findMany());
+if ((await prisma.post.count({ where: { authorId: user.id } })) === 0) {
+  await prisma.post.create({ data: { title: "Hello", authorId: user.id } });
+}
+console.log(
+  "users with posts:",
+  JSON.stringify(await prisma.user.findMany({ include: { posts: true } })),
+);
 
 await prisma.$disconnect();

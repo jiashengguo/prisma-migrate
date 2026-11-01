@@ -6,7 +6,7 @@
   "scripts": {
     "start": "tsx src/index.ts",
     "prisma7:generate": "prisma7 generate",
-    "prisma7:migrate": "prisma7 migrate dev"
+    "prisma8:migrate": "prisma db migrate --advance-ref db"
   },
   "keywords": [],
   "author": "",

@@ -87,6 +87,13 @@
           },
           "User": {
             "fields": {
+              "bio": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
               "createdAt": {
                 "nullable": false,
                 "type": {
@@ -138,6 +145,9 @@
             },
             "storage": {
               "fields": {
+                "bio": {
+                  "column": "bio"
+                },
                 "createdAt": {
                   "column": "createdAt"
                 },
@@ -236,6 +246,11 @@
             },
             "User": {
               "columns": {
+                "bio": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
                 "createdAt": {
                   "codecId": "pg/timestamp-string@1",
                   "dataType": "pg/timestamp",
@@ -291,7 +306,7 @@
         "kind": "postgres-schema"
       }
     },
-    "storageHash": "494e86d69ab2c4cab588ab4f6c84ebe9abf2af9777e1fbedd6b6e3acebdfb4a5"
+    "storageHash": "73ee390f0395ee7e57eda8fafc75b1806b5ab4736337c31522504b40b5311903"
   },
   "execution": {
     "executionHash": "0d078f93eb60de24cdeb03306720faa60d1d4dd2a98eb917535f55e0955f3696",

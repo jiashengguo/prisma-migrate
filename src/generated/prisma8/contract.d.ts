@@ -23,7 +23,7 @@ import type {
 } from '@prisma/orm-postgres/contract/types';
 
 export type StorageHash =
-  StorageHashBase<'494e86d69ab2c4cab588ab4f6c84ebe9abf2af9777e1fbedd6b6e3acebdfb4a5'>;
+  StorageHashBase<'73ee390f0395ee7e57eda8fafc75b1806b5ab4736337c31522504b40b5311903'>;
 export type ExecutionHash =
   ExecutionHashBase<'0d078f93eb60de24cdeb03306720faa60d1d4dd2a98eb917535f55e0955f3696'>;
 export type ProfileHash =
@@ -311,6 +311,7 @@ export namespace Models {
     readonly [RelationKeys]?: 'author';
   };
   export type public_User = {
+    bio: FieldOutputTypes['public']['User']['bio'];
     createdAt: FieldOutputTypes['public']['User']['createdAt'];
     email: FieldOutputTypes['public']['User']['email'];
     id: FieldOutputTypes['public']['User']['id'];
@@ -406,6 +407,12 @@ type ContractBase = Omit<
             };
             readonly User: {
               columns: {
+                readonly bio: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
                 readonly createdAt: {
                   readonly dataType: 'pg/timestamp';
                   readonly codecId: 'pg/timestamp-string@1';
@@ -509,6 +516,10 @@ type ContractBase = Omit<
           };
           readonly User: {
             readonly fields: {
+              readonly bio: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
               readonly createdAt: {
                 readonly nullable: false;
                 readonly type: {
@@ -544,6 +555,7 @@ type ContractBase = Omit<
               readonly table: 'User';
               readonly namespaceId: 'public';
               readonly fields: {
+                readonly bio: { readonly column: 'bio' };
                 readonly createdAt: { readonly column: 'createdAt' };
                 readonly email: { readonly column: 'email' };
                 readonly id: { readonly column: 'id' };
